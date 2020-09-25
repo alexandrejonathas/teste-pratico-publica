@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:tpp="https://informatizza.com.br" layout:decorate="'layout/base'">
+
+<section layout:fragment="conteudo">
+	<div class="adminx-main-content">
+		<div class="container-fluid">
+			<!-- BreadCrumb -->
+			<nav aria-label="breadcrumb" role="navigation">
+				<ol class="breadcrumb adminx-page-breadcrumb">
+					<li class="breadcrumb-item"><a th:href="@{/}">Dashboard</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Times</li>
+				</ol>
+			</nav>
+
+			<th:block th:include="fragments/msg-informacao"></th:block>
+			<th:block th:include="fragments/msg-sucesso"></th:block>
+
+			<div class="card">
+				<div class="card-body">
+
+
+					<div class="pb-3 d-flex align-items-center">
+						<h1 class="mr-4">Times</h1>
+						<a th:href="@{/times/create}" class="btn btn-info accent-3"
+							title="Novo time"> <i data-feather="plus"></i>
+						</a>
+					</div>
+
+					<form method="GET" th:object="${timeFilter}">
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<label for="nome" class="control-label">Nome</label> <input
+									id="nome" type="text" class="form-control" th:field="*{nome}" />
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary">Pesquisar</button>
+
+					</form>
+
+					<div class="table-responsive mt-4">
+						<table class="table table-striped">
+							<thead class="thead-dark">
+								<tr>
+									<th>#</th>
+									<th>Nome</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="time : ${times}">
+									<td th:text="${time.id}"></td>
+									<td th:text="${time.nome}"></td>
+									<td class="text-center">
+										<a class="btn btn-link btn-xs"
+											title="Editar" th:href="@{/times/{id}/edit(id=${time.id})}"> <i
+												class="oi oi-pencil"></i>
+										</a> 
+										<a class="btn btn-link btn-xs text-danger js-btn-exclusao" title="Excluir"
+											href="#" 
+											th:data-url="@{/times/{id}(id=${time.id})}"
+											th:data-objeto="${time.nome}">
+											<i class="oi oi-trash"></i>
+										</a>
+									</td>
+								</tr>
+								<tr th:if="${times.empty}">
+									<td colspan="7" class="text-center">Nenhum time encontrado!</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+</html>

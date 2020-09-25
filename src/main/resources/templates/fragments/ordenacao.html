@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+	<th:block th:fragment="order(pagina, field, texto)">
+		<a th:href="${pagina.urlOrdenada(field)}" th:remove="${pagina.empty} ? tag">
+			<span th:text="${texto}">SKU</span>
+			<span class="dropup" 
+				th:remove="${pagina.desc(field)} ? tag"
+				th:if="${pagina.ordered(field)}">
+				<span class="caret"></span>
+			</span>
+		</a>
+	</th:block>
+
+</html>	
