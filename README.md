@@ -14,5 +14,5 @@ JDK 14
 - Altere as propriedades do arquivo application.properties no diretório src/main/resources e application-test.properties no diretório src/main/resources
 de acordo com as configurações do seu ambiente de desenvolvimento: 
 
-spring.datasource.username=Username do seu banco de dados 
-spring.datasource.username=Password do seu banco de dados
+ - spring.datasource.username=Username do seu banco de dados 
+ - spring.datasource.username=Password do seu banco de dados
