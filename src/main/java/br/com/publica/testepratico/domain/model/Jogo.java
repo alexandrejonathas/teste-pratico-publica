@@ -17,6 +17,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Classe que representa um registro na tabela <b>tbl_jogo</b> e um objeto jogo no projeto java.
+ * @author Jonathas Lima
+ * @version 1.0
+ * @since Release 01 da aplicação
+ */
+
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -44,6 +51,10 @@ public class Jogo {
 	@JoinColumn(name = "time_visitante")
 	private Time timeVisitante;	
 	
+	/**
+	 * Esse método é responsável por dizer se um objeto é novo ou não.
+	 * @return boolean Se é um novo registro ou não
+	 */	
 	public boolean isNovo() {
 		return getId() == null;
 	}

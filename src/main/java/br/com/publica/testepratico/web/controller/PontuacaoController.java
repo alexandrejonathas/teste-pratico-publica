@@ -43,7 +43,7 @@ public class PontuacaoController {
 	@GetMapping
 	public ModelAndView index(PontuacaoFilter filter) {		
 		ModelAndView mv = new ModelAndView("/pontuacao/index");
-		List<Pontuacao> pontuacoes = pontuacaoRep.filtrar(filter);
+		List<Pontuacao> pontuacoes = pontuacaoService.filtrar(filter);
 		mv.addObject("pontuacoes", pontuacoes);
 		return mv;
 	}
@@ -76,7 +76,7 @@ public class PontuacaoController {
 			return create(pontuacao);
 		}
 		
-		pontuacaoRep.save(pontuacao);
+		pontuacaoService.salvar(pontuacao);
 		
 		attributes.addFlashAttribute("mensagem", "Pontuacao salva com sucesso");
 		return new ModelAndView("redirect:/pontuacoes");

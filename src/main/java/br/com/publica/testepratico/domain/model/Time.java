@@ -12,6 +12,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+
+/**
+ * Classe que representa um registro na tabela <b>tbl_time</b> e um objeto time no projeto java.
+ * @author Jonathas Lima
+ * @version 1.0
+ * @since Release 01 da aplicação
+ */
+
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -28,6 +36,10 @@ public class Time {
 	@NotBlank
 	private String nome;
 	
+	/**
+	 * Esse método é responsável por dizer se um objeto é novo ou não.
+	 * @return boolean Se é um novo registro ou não
+	 */
 	public boolean isNovo() {
 		return getId() == null;
 	}

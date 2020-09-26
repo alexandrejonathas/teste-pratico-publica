@@ -17,6 +17,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Classe que representa um registro na tabela <b>tbl_pontuacao</b> e um objeto pontuacao no projeto java.
+ * @author Jonathas Lima
+ * @version 1.0
+ * @since Release 01 da aplicação
+ */
+
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -53,6 +60,10 @@ public class Pontuacao {
 	@Column(name = "quebra_recorde_maximo")
 	private Integer quebraRecordeMaximo;
 	
+	/**
+	 * Esse método é responsável por dizer se um objeto é novo ou não.
+	 * @return boolean Se é um novo registro ou não
+	 */	
 	public boolean isNovo() {
 		return getId() == null;
 	}

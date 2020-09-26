@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,25 +20,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.publica.testepratico.domain.exception.EntidadeExistenteException;
 import br.com.publica.testepratico.domain.filter.TimeFilter;
 import br.com.publica.testepratico.domain.model.Time;
-import br.com.publica.testepratico.domain.repository.TimeRepository;
 import br.com.publica.testepratico.domain.service.TimeService;
 
 @Controller
 @RequestMapping(value="/times")
 public class TimeController {
-
-	@Autowired
-	private TimeRepository timeRep;
 	
 	@Autowired
 	private TimeService timeService;
 	
 	@GetMapping
 	public ModelAndView pesquisar(TimeFilter filter, BindingResult result) {
-		ModelAndView mv = new ModelAndView("/time/index");
-		
-		List<Time> times = StringUtils.isEmpty(filter.getNome()) ?  
-				 timeRep.findAll() : timeRep.filtrar(filter);
+		ModelAndView mv = new ModelAndView("/time/index");		
+		List<Time> times = timeService.filtrar(filter);
 		mv.addObject("times", times);
 		
 		return mv;
