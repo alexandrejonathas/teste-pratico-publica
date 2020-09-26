@@ -4,8 +4,8 @@ Projeto desenvolvido para o proceso de seleção organizado pela Proway para a e
 
 ## Requisitos
 
-MySQL 5.7
-JDK 14
+- MySQL 5.7
+- JDK 14
 
 ## Para executar
 - Clone o projeto para sua máquina
@@ -15,4 +15,8 @@ JDK 14
 de acordo com as configurações do seu ambiente de desenvolvimento: 
 
 	- spring.datasource.username=Username do seu banco de dados 
-	- spring.datasource.username=Password do seu banco de dados
+	- spring.datasource.passord=Password do seu banco de dados
+
+- Execute o projeto
+	- Se estiver utilizando o STS 4, acesse a URL http://localhost:8080 no navegador
+	- Se estiver utilizando o eclipse ou netbeans, acesse a URL http://localhost:8080/tpp no navegador
