@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CompoundSelection;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
@@ -79,10 +80,10 @@ public class PontuacaoRepositoryImpl implements PontuacaoRepositoryQueries {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<RecordeQuebrado> criteria = builder.createQuery(RecordeQuebrado.class);
 		
-		var root = criteria.from(Pontuacao.class);
+		Root<Pontuacao> root = criteria.from(Pontuacao.class);
 		
 		
-		var selection = builder.construct(RecordeQuebrado.class, 
+		CompoundSelection<RecordeQuebrado> selection = builder.construct(RecordeQuebrado.class, 
 				builder.sum(root.get("quebraRecordeMinimo")), 
 				builder.sum(root.get("quebraRecordeMaximo")));
 		

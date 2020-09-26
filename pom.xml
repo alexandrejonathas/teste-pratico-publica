@@ -15,7 +15,7 @@
 	<description>Teste do processo seletivo da empresa pública setembro 2020.</description>
 
 	<properties>
-		<java.version>14</java.version>
+		<java.version>1.8</java.version>
 		
 		<thymeleaf-extras-java8time.version>3.0.4.RELEASE</thymeleaf-extras-java8time.version>
 		

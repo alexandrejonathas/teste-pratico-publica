@@ -5,7 +5,19 @@ Projeto desenvolvido para o proceso de seleção organizado pela Proway para a e
 ## Requisitos
 
 - MySQL 5.7
-- JDK 14
+- JDK 1.8+
+- Lombok 
+	- https://projectlombok.org/download
+
+## Instalação do Lombok em sua IDE
+- https://projectlombok.org/setup/eclipse
+	- Após baixar a biblioteca Lombok
+	- Certifique-se de está com a IDE fechada
+	- Dê um duplo clique no arquivo lombok.jar
+	- Clique em Specify location
+	- Encontre o caminho do executavel da sua IDE e o selecione
+	- Clique em intall/Update
+	- Pronto pode fechar a execução do Lombok e abrir sua IDE
 
 ## Para executar
 - Clone o projeto para sua máquina
@@ -17,6 +29,6 @@ de acordo com as configurações do seu ambiente de desenvolvimento:
 	- spring.datasource.username=Username do seu banco de dados 
 	- spring.datasource.passord=Password do seu banco de dados
 
-- Execute o projeto
-	- Se estiver utilizando o STS 4, acesse a URL http://localhost:8080 no navegador
-	- Se estiver utilizando o eclipse ou netbeans, acesse a URL http://localhost:8080/tpp no navegador
+- Executando o projeto
+	- Execute a classe TestePraticoPublicaApplication com Run As Application Java
+	- Acesse a URL http://localhost:8080 no navegador
