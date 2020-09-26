@@ -16,7 +16,7 @@ Projeto desenvolvido para o proceso de seleção organizado pela Proway para a e
 	- Dê um duplo clique no arquivo lombok.jar
 	- Clique em Specify location
 	- Encontre o caminho do executavel da sua IDE e o selecione
-	- Clique em intall/Update
+	- Clique em Install/Update
 	- Pronto pode fechar a execução do Lombok e abrir sua IDE
 
 ## Para executar
