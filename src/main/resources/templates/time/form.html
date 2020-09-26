@@ -31,8 +31,9 @@
 							th:action="${time.novo} ? @{/times/create} : @{/times/{id}/edit(id=${time.id})}">
 
 						<th:block th:include="fragments/msg-errors-validacao"></th:block>
-
+						<th:block th:include="fragments/msg-informacao"></th:block>
 						<th:block th:include="fragments/msg-sucesso"></th:block>
+						
 						<div class="card">
 							<div class="card-body">
 								<input type="hidden" id="id" name="id" th:value="*{id}" />

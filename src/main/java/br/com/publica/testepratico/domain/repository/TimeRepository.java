@@ -11,4 +11,6 @@ public interface TimeRepository extends CustomJpaRepository<Time, Long>, TimeRep
 	
 	List<Time> findByNomeLike(String nome);
 	
+	Time findByNomeIgnoreCase(String nome);
+	
 }

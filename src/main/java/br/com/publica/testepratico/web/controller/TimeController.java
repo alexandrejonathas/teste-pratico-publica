@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.publica.testepratico.domain.exception.EntidadeExistenteException;
 import br.com.publica.testepratico.domain.filter.TimeFilter;
 import br.com.publica.testepratico.domain.model.Time;
 import br.com.publica.testepratico.domain.repository.TimeRepository;
@@ -65,15 +66,21 @@ public class TimeController {
 	
 	@RequestMapping(value = { "/create", "{\\d+}/edit" }, method = {RequestMethod.POST})
 	public ModelAndView store(@Valid Time time,  BindingResult result, Model model, RedirectAttributes attributes) {
-		
-		if(result.hasErrors()) {
-			return create(time);
+		try {
+			if(result.hasErrors()) {
+				return create(time);
+			}
+			
+			timeService.salvar(time);
+			
+			attributes.addFlashAttribute("mensagem", "Time salvo com sucesso");
+			return new ModelAndView("redirect:/times");
+		}catch (EntidadeExistenteException e) {
+			ModelAndView mv = create(time);
+			mv.addObject(time);
+			mv.addObject("informacao", e.getMessage());
+			return mv;
 		}
-		
-		timeRep.save(time);
-		
-		attributes.addFlashAttribute("mensagem", "Time salvo com sucesso");
-		return new ModelAndView("redirect:/times");
 	}
 	
 	
