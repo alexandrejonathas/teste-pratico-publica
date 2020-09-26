@@ -108,7 +108,7 @@
                 <!-- Notifications -->
                 <li class="nav-item dropdown">
                     <a class="nav-link avatar-with-name" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#">
-                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg"
+                        <img th:src="@{/images/avatar_maria.jpg}"
                             class="d-inline-block align-top" alt="">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -219,16 +219,12 @@
         </div>
     </div>
 
-    <!-- If you prefer jQuery these are the required scripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/vendors/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/js/vendors/popper.min.js}"></script>
+    <script th:src="@{/js/vendors/bootstrap.min.js}"></script>
 
     <script th:src="@{/layout/js/vendor.js}"></script>
     <script th:src="@{/layout/js/adminx.js}"></script>
-    <!-- If you prefer vanilla JS these are the only required scripts -->
-    <!-- script src="./dist/js/vendor.js"></script>
-    <script src="./dist/js/adminx.vanilla.js"></script-->
 
 	<script th:src="@{/js/vendors/jquery.mask.min.js}"></script>
 	<script th:src="@{/js/vendors/sweetalert.min.js}"></script>
