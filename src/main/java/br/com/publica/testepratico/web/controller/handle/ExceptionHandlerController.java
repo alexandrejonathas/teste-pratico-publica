@@ -34,7 +34,7 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
 		String detalhe = ex.getMessage();
 		Problema problema = criarProblemaBuilder(status, problemaTipo, detalhe).message(detalhe).build();
 		return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
-	}
+	}	
 	
 	private Problema.ProblemaBuilder criarProblemaBuilder(HttpStatus status, ProblemaTipo problemaTipo, String detalhe) {
 		return Problema.builder().status(status.value()).title(problemaTipo.getTitulo())

@@ -50,7 +50,7 @@ public class JogoRepositoryImpl implements JogoRepositoryQueries {
 		criteria.distinct(true);
 		
 		criteria.where(predicates.toArray(new Predicate[predicates.size()]));
-		criteria.orderBy(builder.asc(root.get("data")));
+		criteria.orderBy(builder.desc(root.get("data")));
 		
 		TypedQuery<Jogo> query = manager.createQuery(criteria);			
 		

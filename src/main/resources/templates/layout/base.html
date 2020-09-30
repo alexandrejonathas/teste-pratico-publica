@@ -209,6 +209,35 @@
 
                     </ul>
                 </li>
+                
+				<li class="sidebar-nav-item">
+                    <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#relatorios" aria-expanded="false"
+                        aria-controls="cadastros">
+                        <span class="sidebar-nav-icon">
+                            <i data-feather="pie-chart"></i>
+                        </span>
+                        <span class="sidebar-nav-name">
+                            Relatórios
+                        </span>
+                        <span class="sidebar-nav-end">
+                            <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+                        </span>
+                    </a>
+
+                    <ul class="sidebar-sub-nav collapse" id="relatorios">
+                        <li class="sidebar-nav-item">
+                            <a th:href="@{/relatorios/pontuacao-periodo}" class="sidebar-nav-link">
+                                <span class="sidebar-nav-abbr mr-1">
+                                    PP
+                                </span>
+                                <span class="sidebar-nav-name">
+                                    Pontuação Período	
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>                
 
             </ul>
         </div><!-- Sidebar End -->

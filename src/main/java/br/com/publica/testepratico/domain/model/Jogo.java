@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -38,6 +39,7 @@ public class Jogo {
 	private Long id;	
 	
 	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(columnDefinition = "date")
 	private LocalDate data;
 	

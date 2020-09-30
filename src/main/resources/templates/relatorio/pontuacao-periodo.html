@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/base">
+
+<section layout:fragment="conteudo">
+
+	<div class="adminx-main-content">
+		<div class="container-fluid">
+
+			<!-- BreadCrumb -->
+			<nav aria-label="breadcrumb" role="navigation">
+				<ol class="breadcrumb adminx-page-breadcrumb">
+					<li class="breadcrumb-item"><a th:href="@{/}">Dashboard</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Pontuação por período</li>
+				</ol>
+			</nav>
+
+			<div class="pb-3">
+				<h1>Pontuação por período</h1>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12">
+					<form th:method="POST" th:object="${periodoRelatorio}" th:action="@{/relatorios/pontuacao-periodo}"
+						class="form-vertical js-form-loading" target="_blank">
+
+						<th:block th:include="fragments/msg-errors-validacao"></th:block>
+						<th:block th:include="fragments/msg-informacao"></th:block>
+						<th:block th:include="fragments/msg-sucesso"></th:block>
+						
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="form-group col-sm-4 field-required"
+										th:classappend="${#fields.hasErrors('dataInicio')} ? has-error">
+										<label for="dataInicio" class="control-label">Data inicial</label> 
+										<input id="dataInicio" type="text" class="form-control js-mask-date" th:field="*{dataInicio}" />
+									</div>
+									
+									<div class="form-group col-sm-4 field-required"
+										th:classappend="${#fields.hasErrors('dataFim')} ? has-error">
+										<label for="dataFim" class="control-label">Data final</label> 
+										<input id="dataFim" type="text" class="form-control js-mask-date" th:field="*{dataFim}" />
+									</div>									
+									
+								</div>	
+							</div>
+							<div class="card-footer">
+								<div class="form-group">
+									<button class="btn  btn-primary" type="submit">Gerar relatório</button>
+									<a th:href="@{/}" class="btn  btn-default">Cancelar</a> 
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+ <th:block layout:fragment="javascript-extra">
+ 	<script th:src="@{/js/tpp.mask-date.js}"></script>
+ </th:block>
+</html>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_pontuacao_periodo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="07d84e9f-51df-45a1-9890-298f1f8ef0e6">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="tpp"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="345"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="644"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="data_inicio" class="java.util.Date"/>
+	<parameter name="data_fim" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT j.data, tc.nome AS time_casa, tv.nome AS time_visitante, 
+p.placar, p.minimo_temporada, p.maximo_temporada, p.quebra_recorde_minimo, p.quebra_recorde_maximo
+FROM tbl_pontuacao AS p
+LEFT JOIN tbl_jogo AS j ON j.id = p.jogo_id
+LEFT JOIN tbl_time AS tc ON tc.id = j.time_casa
+LEFT JOIN tbl_time AS tv ON tv.id = j.time_visitante
+WHERE j.data >= $P{data_inicio} AND j.data <= $P{data_fim}
+ORDER BY j.data DESC
+]]>
+	</queryString>
+	<field name="data" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="data"/>
+		<property name="com.jaspersoft.studio.field.label" value="data"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_jogo"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="time_casa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="time_casa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_time"/>
+	</field>
+	<field name="time_visitante" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="time_visitante"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_time"/>
+	</field>
+	<field name="placar" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="placar"/>
+		<property name="com.jaspersoft.studio.field.label" value="placar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_pontuacao"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="minimo_temporada" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="minimo_temporada"/>
+		<property name="com.jaspersoft.studio.field.label" value="minimo_temporada"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_pontuacao"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="maximo_temporada" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="maximo_temporada"/>
+		<property name="com.jaspersoft.studio.field.label" value="maximo_temporada"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_pontuacao"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quebra_recorde_minimo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="quebra_recorde_minimo"/>
+		<property name="com.jaspersoft.studio.field.label" value="quebra_recorde_minimo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_pontuacao"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quebra_recorde_maximo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="quebra_recorde_maximo"/>
+		<property name="com.jaspersoft.studio.field.label" value="quebra_recorde_maximo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_pontuacao"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="117" y="7" width="320" height="30" uuid="b785f574-7f0a-478c-824d-1338115d90df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PONTUAÇÃO POR PERÍODO]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="190" y="40" width="73" height="14" uuid="a0f3021c-4e35-4002-8319-d1943c0e0c14">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{data_inicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="300" y="40" width="73" height="14" uuid="2ad6fd49-8462-42af-a9b4-7d0c541b9b3a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{data_fim}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="263" y="40" width="36" height="14" uuid="b8f3e82f-a96c-49d2-a2b3-579017b62302">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[até]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="55" splitType="Stretch">
+			<rectangle>
+				<reportElement x="308" y="1" width="113" height="50" uuid="d82cfc89-7f19-4570-8adc-cd18d620ca78"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="308" y="1" width="113" height="20" uuid="29927854-afae-4bbe-9b10-18cd694bf5bb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4d6ff1b-ab2f-4853-bc92-3d5b506f0477"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TEMPORADA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="308" y="21" width="113" height="1" uuid="72a3829b-d320-42f2-94cc-91d583a215ee">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="366" y="21" width="1" height="30" uuid="776470e9-888e-493c-935c-474972af71af"/>
+			</line>
+			<staticText>
+				<reportElement x="308" y="25" width="58" height="22" uuid="fae593c3-6951-4947-919f-b1ca14724485"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="25" width="55" height="22" uuid="72e3ea0d-238f-461a-9c58-ad4e4750ff9e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MAX]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="425" y="1" width="128" height="50" uuid="ab2cfc8a-c6cd-4e60-b749-cc0550dbf8c0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="425" y="1" width="128" height="20" uuid="347b92ef-af0e-4416-875f-7d77117339a2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4d6ff1b-ab2f-4853-bc92-3d5b506f0477"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[QUEBRA RECORDE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="425" y="21" width="128" height="1" uuid="7e9d9c23-d485-47d7-aeb6-d517bec6b21e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="495" y="21" width="1" height="30" uuid="714692e4-1517-48e0-8202-5a80688ab6f3"/>
+			</line>
+			<staticText>
+				<reportElement x="430" y="25" width="60" height="22" uuid="163ef5a8-ff95-402b-bed0-5c016ecf8eec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="25" width="58" height="22" uuid="e0e743cb-8750-498f-af43-89efbb8707d4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MAX]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="1" width="305" height="50" uuid="d3b697c0-0f01-4f41-bbf6-7b8c6eadb40e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="75" y="25" width="168" height="22" uuid="cf2c0eef-09e6-41c1-a774-b4b2f61b9de2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4e8c294a-a257-4836-8cb0-e2afdfc6876f"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[JOGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="25" width="55" height="22" uuid="3ecc9a06-2322-48dd-b295-1b17c03ba19f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="850b0481-030a-484c-88df-913987311675"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[PLACAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="25" width="70" height="22" uuid="4c17e89b-e099-433d-b879-6e5d084cd834">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0dc42d35-9e21-4339-811e-9c2cf75ddfa3"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DATA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="21" width="305" height="1" uuid="0c50c871-5d13-4de1-8196-4363432eac62"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="4" width="305" height="15" uuid="06f843ca-fa67-4668-b23b-ca026086da41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DADOS DA PARTIDA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="246" y="21" width="1" height="30" uuid="757ffeb0-0ed8-4b6d-9adb-656f74d2c63c"/>
+			</line>
+			<line>
+				<reportElement x="72" y="21" width="1" height="30" uuid="f64f803f-9c58-4e7f-a66f-34831fb2b63d"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="70" height="13" uuid="453fce78-8e1c-4bf4-b3af-c7fc6e9e2fb5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0dc42d35-9e21-4339-811e-9c2cf75ddfa3"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="55" height="13" uuid="ce82a2b8-c776-431a-b972-21c44d0dd4d3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="850b0481-030a-484c-88df-913987311675"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{placar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="75" y="0" width="168" height="13" uuid="81d9c9e6-1c29-4520-9927-53fd6a43e59f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4e8c294a-a257-4836-8cb0-e2afdfc6876f"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{time_casa} + " x " +$F{time_visitante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="55" height="13" uuid="d575e223-696d-453b-827e-659708a7811e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4d6ff1b-ab2f-4853-bc92-3d5b506f0477"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{minimo_temporada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="367" y="0" width="53" height="13" uuid="9ed9ecee-8d60-42b7-aab8-3c0a0bc3d948">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4660ae05-8744-47b1-8be3-c73048543c77"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{maximo_temporada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="60" height="13" uuid="9578920a-205f-4443-b926-d6e47692c7b2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee1f65a9-671f-40cc-bd95-bcfe27fca945"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quebra_recorde_minimo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="0" width="58" height="13" uuid="7ae1779a-7278-459c-8318-3e810b9be159">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ad06ab08-b600-446d-9ff4-8b5140defa50"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quebra_recorde_maximo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
